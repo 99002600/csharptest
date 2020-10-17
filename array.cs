@@ -32,3 +32,4 @@ namespace Array
         }
     }
 }
+#Here in this code i have avoided exceptions in each scenario thats why i have not used exceptional handling in the code
