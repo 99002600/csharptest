@@ -11,7 +11,7 @@ namespace MVC.Controllers
 
     public class EmpDataController : Controller
     {
-        public ViewResult AllEmployees()
+        public ViewResult GETEmployees()
         {
             var context = new Mydatabase();
             var model = context.Employees.ToList();
@@ -36,7 +36,7 @@ namespace MVC.Controllers
             model.EmpAddress = emp.EmpAddress;
             model.EmpSalary = emp.EmpSalary;
             context.SaveChanges();
-            return RedirectToAction("AllEmployees");
+            return RedirectToAction("GETEmployees");
         }
 
         public ViewResult NewEmployee()
@@ -53,11 +53,11 @@ namespace MVC.Controllers
                 var context = new Mydatabase();
                 context.Employees.Add(emp);
                 context.SaveChanges();
-                return RedirectToAction("AllEmployees");
+                return RedirectToAction("GETEmployees");
             }
             catch
             {
-                return RedirectToAction("AllEmployees");
+                return RedirectToAction("GETEmployees");
             }
         }
         public ActionResult Delete(string id)
@@ -68,7 +68,7 @@ namespace MVC.Controllers
             var model = context.Employees.FirstOrDefault((e) => e.EmpID == empId);
             context.Employees.Remove(model);
             context.SaveChanges();
-            return RedirectToAction("AllEmployees");
+            return RedirectToAction("GETEmployees");
         }
     }
 }
